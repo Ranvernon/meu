@@ -1,0 +1,109 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #000428, #004e92);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+button {
+    padding: 10px 20px;
+    background: #ff6f61;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #ff4b47;
+}
+
+.universe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.universe.visible {
+    opacity: 1;
+}
+
+.stars, .stars2, .stars3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat;
+    background-position: center;
+    z-index: 0;
+}
+
+.stars {
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: animStar 50s linear infinite;
+}
+
+.stars2 {
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: animStar 100s linear infinite;
+}
+
+.stars3 {
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+    from {transform: translateY(0);}
+    to {transform: translateY(-1000px);}
+}
+
+.planet {
+    width: 200px;
+    height: 200px;
+    background: url('https://www.transparenttextures.com/patterns/black-twill.png');
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: planetMove 10s ease-in-out infinite;
+}
+
+@keyframes planetMove {
+    0%, 100% {transform: translateX(-50%) translateY(0);}
+    50% {transform: translateX(-50%) translateY(-20px);}
+}
+
+.message {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.universe.visible .message {
+    opacity: 1;
+}
